@@ -154,6 +154,150 @@
           }
         }
       }
+    },
+    "/v2/buiilds": {
+      "get": {
+        "operationId": "ListAllBuilds",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Build"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/organization/{organization}/buiilds": {
+      "get": {
+        "operationId": "ListAllBuildsForOrganization",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Build"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/organization/{organization}/pipelines/{pipeline}/buiilds": {
+      "get": {
+        "operationId": "ListAllBuildsForPipeline",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pipeline",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Build"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
     }
   },
   "components": {
@@ -218,6 +362,34 @@
         "required": [
           "id",
           "graphql_id"
+        ]
+      },
+      "Build": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "graphql_id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "web_url": {
+            "type": "string"
+          },
+          "number": {
+            "type": "number",
+            "format": "float"
+          }
+        },
+        "required": [
+          "id",
+          "graphql_id",
+          "url",
+          "web_url",
+          "number"
         ]
       }
     }

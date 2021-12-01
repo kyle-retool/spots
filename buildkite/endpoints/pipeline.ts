@@ -1,6 +1,6 @@
 import { body, endpoint, pathParams, queryParams, request, response} from "@airtasker/spot";
 
-import { Pipeline } from "../model"
+import { Pipeline, Pagination } from "../model"
 
 @endpoint({
   method: "GET",
@@ -14,10 +14,7 @@ class ListPipelines {
       organization: string;
     },
     @queryParams
-    queryParams: {
-      page?: number;
-      per_page?: number;
-    }
+    queryParams: Pagination
   ) {}
 
   @response({ status: 200 })

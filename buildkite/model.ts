@@ -1,3 +1,16 @@
+export interface Pagination {
+  page?: number;
+  per_page?: number;
+}
+
+export interface Build {
+  id: string;
+  graphql_id: string;
+  url: string;
+  web_url: string;
+  number: number,
+}
+
 export interface Organization {
   id: string;
   graphql_id: string;

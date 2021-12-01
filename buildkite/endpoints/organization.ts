@@ -1,6 +1,6 @@
 import { body, endpoint, pathParams, queryParams, request, response} from "@airtasker/spot";
 
-import { Organization } from "../model"
+import { Organization, Pagination} from "../model"
 
 @endpoint({
   method: "GET",
@@ -10,10 +10,7 @@ class ListOrganizations {
   @request
   request(
     @queryParams
-    queryParams: {
-      page?: number;
-      per_page?: number;
-    }
+    queryParams: Pagination
   ) {}
 
   @response({ status: 200 })
