@@ -1,0 +1,225 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Buildkite REST AP",
+    "version": "0.0.0"
+  },
+  "paths": {
+    "/v2/organizations": {
+      "get": {
+        "operationId": "ListOrganizations",
+        "parameters": [
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Organization"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/organizations/{organization}": {
+      "get": {
+        "operationId": "GetOrganization",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Organization"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/organizations/{organization}/pipelines": {
+      "get": {
+        "operationId": "ListPipelines",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          {
+            "name": "per_page",
+            "in": "query",
+            "required": false,
+            "schema": {
+              "type": "number",
+              "format": "float"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Pipeline"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v2/organizations/{organization}/pipelines/{pipeline}": {
+      "get": {
+        "operationId": "GetPipeline",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "pipeline",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Organization": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "graphql_id": {
+            "type": "string"
+          },
+          "url": {
+            "type": "string"
+          },
+          "web_url": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "slug": {
+            "type": "string"
+          },
+          "pipelines_url": {
+            "type": "string"
+          },
+          "agents_url": {
+            "type": "string"
+          },
+          "emojis_url": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "graphql_id",
+          "url",
+          "web_url",
+          "name",
+          "slug",
+          "pipelines_url",
+          "agents_url",
+          "emojis_url",
+          "created_at"
+        ]
+      },
+      "Pipeline": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "graphql_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "graphql_id"
+        ]
+      }
+    }
+  }
+}
