@@ -155,7 +155,7 @@
         }
       }
     },
-    "/v2/buiilds": {
+    "/v2/builds": {
       "get": {
         "operationId": "ListAllBuilds",
         "parameters": [
@@ -195,7 +195,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/buiilds": {
+    "/v2/organization/{organization}/builds": {
       "get": {
         "operationId": "ListAllBuildsForOrganization",
         "parameters": [
@@ -243,7 +243,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/pipelines/{pipeline}/buiilds": {
+    "/v2/organization/{organization}/pipelines/{pipeline}/builds": {
       "get": {
         "operationId": "ListAllBuildsForPipeline",
         "parameters": [
@@ -393,5 +393,10 @@
         ]
       }
     }
-  }
+  },
+  "servers": [
+    {
+      "url": "https://api.buildkite.com"
+    }
+  ]
 }

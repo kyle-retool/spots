@@ -4,7 +4,7 @@ import { Build, Pagination } from "../model"
 
 @endpoint({
   method: "GET",
-  path: "/v2/buiilds"
+  path: "/v2/builds"
 })
 class ListAllBuilds {
   @request
@@ -21,7 +21,7 @@ class ListAllBuilds {
 
 @endpoint({
   method: "GET",
-  path: "/v2/organization/:organization/buiilds"
+  path: "/v2/organization/:organization/builds"
 })
 class ListAllBuildsForOrganization {
   @request
@@ -42,7 +42,7 @@ class ListAllBuildsForOrganization {
 
 @endpoint({
   method: "GET",
-  path: "/v2/organization/:organization/pipelines/:pipeline/buiilds"
+  path: "/v2/organization/:organization/pipelines/:pipeline/builds"
 })
 class ListAllBuildsForPipeline {
   @request
