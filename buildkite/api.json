@@ -195,7 +195,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/builds": {
+    "/v2/organizations/{organization}/builds": {
       "get": {
         "operationId": "ListAllBuildsForOrganization",
         "parameters": [
@@ -243,7 +243,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/pipelines/{pipeline}/builds": {
+    "/v2/organizations/{organization}/pipelines/{pipeline}/builds": {
       "get": {
         "operationId": "ListAllBuildsForPipeline",
         "parameters": [
@@ -332,7 +332,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/pipelines/{pipeline}/builds/{build}": {
+    "/v2/organizations/{organization}/pipelines/{pipeline}/builds/{build}": {
       "get": {
         "operationId": "GetABuild",
         "parameters": [
@@ -376,7 +376,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/pipelines/{pipeline}/builds/{build}/cancel": {
+    "/v2/organizations/{organization}/pipelines/{pipeline}/builds/{build}/cancel": {
       "put": {
         "operationId": "CancelABuild",
         "parameters": [
@@ -420,7 +420,7 @@
         }
       }
     },
-    "/v2/organization/{organization}/pipelines/{pipeline}/builds/{build}/rebuild": {
+    "/v2/organizations/{organization}/pipelines/{pipeline}/builds/{build}/rebuild": {
       "put": {
         "operationId": "RebuildABuild",
         "parameters": [

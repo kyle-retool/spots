@@ -21,7 +21,7 @@ class ListAllBuilds {
 
 @endpoint({
   method: "GET",
-  path: "/v2/organization/:organization/builds"
+  path: "/v2/organizations/:organization/builds"
 })
 class ListAllBuildsForOrganization {
   @request
@@ -42,7 +42,7 @@ class ListAllBuildsForOrganization {
 
 @endpoint({
   method: "GET",
-  path: "/v2/organization/:organization/pipelines/:pipeline/builds"
+  path: "/v2/organizations/:organization/pipelines/:pipeline/builds"
 })
 class ListAllBuildsForPipeline {
   @request
@@ -64,7 +64,7 @@ class ListAllBuildsForPipeline {
 
 @endpoint({
   method: "GET",
-  path: "/v2/organization/:organization/pipelines/:pipeline/builds/:build"
+  path: "/v2/organizations/:organization/pipelines/:pipeline/builds/:build"
 })
 class GetABuild {
   @request
@@ -85,7 +85,7 @@ class GetABuild {
 
 @endpoint({
   method: "POST",
-  path: "/v2/organization/:organization/pipelines/:pipeline/builds"
+  path: "/v2/organizations/:organization/pipelines/:pipeline/builds"
 })
 class CreateABuild {
   @request
@@ -105,7 +105,7 @@ class CreateABuild {
 
 @endpoint({
   method: "PUT",
-  path: "/v2/organization/:organization/pipelines/:pipeline/builds/:build/cancel"
+  path: "/v2/organizations/:organization/pipelines/:pipeline/builds/:build/cancel"
 })
 class CancelABuild {
   @request
@@ -126,7 +126,7 @@ class CancelABuild {
 
 @endpoint({
   method: "PUT",
-  path: "/v2/organization/:organization/pipelines/:pipeline/builds/:build/rebuild"
+  path: "/v2/organizations/:organization/pipelines/:pipeline/builds/:build/rebuild"
 })
 class RebuildABuild {
   @request
