@@ -61,3 +61,86 @@ class ListAllBuildsForPipeline {
     @body body: Build[]
   ) {}
 }
+
+@endpoint({
+  method: "GET",
+  path: "/v2/organization/:organization/pipelines/:pipeline/builds/:build"
+})
+class GetABuild {
+  @request
+  request(
+    @pathParams
+    pathParams: {
+      organization: string;
+      pipeline: string;
+      build: number;
+    },
+  ) {}
+
+  @response({ status: 200 })
+  successfulResponse(
+    @body body: Build
+  ) {}
+}
+
+@endpoint({
+  method: "POST",
+  path: "/v2/organization/:organization/pipelines/:pipeline/builds"
+})
+class CreateABuild {
+  @request
+  request(
+    @pathParams
+    pathParams: {
+      organization: string;
+      pipeline: string;
+    },
+  ) {}
+
+  @response({ status: 201 })
+  successfulResponse(
+    @body body: Build
+  ) {}
+}
+
+@endpoint({
+  method: "PUT",
+  path: "/v2/organization/:organization/pipelines/:pipeline/builds/:build/cancel"
+})
+class CancelABuild {
+  @request
+  request(
+    @pathParams
+    pathParams: {
+      organization: string;
+      pipeline: string;
+      build: number;
+    },
+  ) {}
+
+  @response({ status: 200 })
+  successfulResponse(
+    @body body: Build
+  ) {}
+}
+
+@endpoint({
+  method: "PUT",
+  path: "/v2/organization/:organization/pipelines/:pipeline/builds/:build/rebuild"
+})
+class RebuildABuild {
+  @request
+  request(
+    @pathParams
+    pathParams: {
+      organization: string;
+      pipeline: string;
+      build: number;
+    },
+  ) {}
+
+  @response({ status: 200 })
+  successfulResponse(
+    @body body: Build
+  ) {}
+}
