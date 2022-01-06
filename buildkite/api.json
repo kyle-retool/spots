@@ -7,6 +7,7 @@
   "paths": {
     "/v2/organizations": {
       "get": {
+        "description": "Returns a paginated list of the user’s organizations.",
         "operationId": "ListOrganizations",
         "parameters": [
           {
@@ -47,7 +48,7 @@
     },
     "/v2/organizations/{organization}": {
       "get": {
-        "operationId": "GetOrganization",
+        "operationId": "GetAnOrganization",
         "parameters": [
           {
             "name": "organization",
@@ -74,6 +75,7 @@
     },
     "/v2/organizations/{organization}/pipelines": {
       "get": {
+        "description": "Returns a paginated list of an organization’s pipelines.",
         "operationId": "ListPipelines",
         "parameters": [
           {
@@ -118,11 +120,47 @@
             }
           }
         }
+      },
+      "post": {
+        "description": "YAML pipelines are the recommended way to manage your pipelines. To create a\nYAML pipeline using this endpoint, set the configuration key in your json\nrequest body to an the YAML you want in your pipeline.",
+        "operationId": "CreateAYAMLPipeline",
+        "parameters": [
+          {
+            "name": "organization",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateYAMLPipelineRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "201 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Pipeline"
+                }
+              }
+            }
+          }
+        }
       }
     },
     "/v2/organizations/{organization}/pipelines/{pipeline}": {
       "get": {
-        "operationId": "GetPipeline",
+        "operationId": "GetAPipeline",
         "parameters": [
           {
             "name": "organization",
@@ -527,6 +565,54 @@
         "required": [
           "id",
           "graphql_id"
+        ]
+      },
+      "CreateYAMLPipelineRequest": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "The name of the pipeline."
+          },
+          "repository": {
+            "type": "string",
+            "description": "The repository URL."
+          },
+          "configuration": {
+            "type": "string",
+            "description": "The YAML pipeline that consists of the build pipeline steps."
+          },
+          "branch_configuration": {
+            "type": "string",
+            "example": "master feature/*",
+            "description": "A branch filter pattern to limit which pushed branches trigger builds on this pipeline."
+          },
+          "cancel_running_branch_builds": {
+            "type": "boolean",
+            "example": true,
+            "default": false,
+            "description": "Cancel intermediate builds. When a new build is created on a branch, any previous builds that are running on the same branch will be automatically canceled."
+          },
+          "cancel_running_branch_builds_filter": {
+            "type": "string",
+            "example": "develop prs/*",
+            "description": "A branch filter pattern to limit which branches intermediate build cancelling applies to."
+          },
+          "default_branch": {
+            "type": "string",
+            "example": "master",
+            "description": "The name of the branch to prefill when new builds are created or triggered in\nBuildkite. It is also used to filter the builds and metrics shown on the\nPipelines page."
+          },
+          "description": {
+            "type": "string",
+            "example": "📦 A testing pipeline",
+            "description": "The pipeline description."
+          }
+        },
+        "required": [
+          "name",
+          "repository",
+          "configuration"
         ]
       },
       "Build": {

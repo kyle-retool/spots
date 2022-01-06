@@ -2,6 +2,7 @@ import { body, endpoint, pathParams, queryParams, request, response} from "@airt
 
 import { Organization, Pagination} from "../model"
 
+/** Returns a paginated list of the user’s organizations. */
 @endpoint({
   method: "GET",
   path: "/v2/organizations"
@@ -23,7 +24,7 @@ class ListOrganizations {
   method: "GET",
   path: "/v2/organizations/:organization"
 })
-class GetOrganization {
+class GetAnOrganization {
   @request
   request(
     @pathParams
