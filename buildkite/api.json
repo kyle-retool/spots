@@ -356,6 +356,16 @@
             }
           }
         ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateBuildRequest"
+              }
+            }
+          },
+          "required": true
+        },
         "responses": {
           "201": {
             "description": "201 response",
@@ -641,6 +651,74 @@
           "url",
           "web_url",
           "number"
+        ]
+      },
+      "CreateBuildRequest": {
+        "type": "object",
+        "properties": {
+          "commit": {
+            "type": "string",
+            "example": "HEAD",
+            "description": "Ref, SHA or tag to be built.\nNote: Before running builds on tags, make sure your agent is fetching git tags."
+          },
+          "branch": {
+            "type": "string",
+            "example": "master",
+            "description": "Branch the commit belongs to. This allows you to take advantage of your\npipeline and step-level branch filtering rules."
+          },
+          "author": {
+            "type": "object",
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "email": {
+                "type": "string"
+              }
+            },
+            "description": "A hash with a \"name\" and \"email\" key to show who created this build.\nDefault value: the user making the API request."
+          },
+          "clean_checkout": {
+            "type": "boolean",
+            "description": "Force the agent to remove any existing build directory and perform a fresh checkout.\nDefault value: false."
+          },
+          "env": {
+            "type": "object",
+            "description": "Environment variables to be made available to the build."
+          },
+          "ignore_pipeline_branch_filters": {
+            "type": "boolean",
+            "description": "Run the build regardless of the pipeline’s branch filtering rules. Step\nbranch filtering rules will still apply.\nDefault value: false."
+          },
+          "message": {
+            "type": "string",
+            "example": "Testing all the things :rocket:",
+            "description": "Message for the build."
+          },
+          "meta_data": {
+            "type": "object",
+            "description": "A hash of meta-data to make available to the build.\nDefault value: {}."
+          },
+          "pull_request_base_branch": {
+            "type": "string",
+            "example": "master",
+            "description": "For a pull request build, the base branch of the pull request."
+          },
+          "pull_request_id": {
+            "type": "number",
+            "format": "float",
+            "example": 42,
+            "description": "For a pull request build, the pull request number"
+          },
+          "pull_request_repository": {
+            "type": "string",
+            "example": "git://github.com/my-org/my-repo.git",
+            "description": "For a pull request build, the git repository of the pull request."
+          }
+        },
+        "required": [
+          "commit",
+          "branch"
         ]
       }
     }
